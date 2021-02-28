@@ -24,4 +24,12 @@ public class MerchantController {
         BeanUtils.copyProperties(createMerchant, returnValue);
         return returnValue;
     }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/merchant-reviewer/merchant/get-merchant/{id}")
+    public MerchantRest getMerchant(@PathVariable String id) {
+        MerchantDto dto = merchantService.getMerchantByMerchantId(id);
+        MerchantRest returnValue = new MerchantRest();
+        BeanUtils.copyProperties(dto, returnValue);
+        return returnValue;
+    }
 }

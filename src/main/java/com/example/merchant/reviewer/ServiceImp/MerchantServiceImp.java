@@ -21,8 +21,8 @@ public class MerchantServiceImp implements MerchantService {
     @Override
     public MerchantDto createMerchant(MerchantDto merchantDto) {
 
-        if (merchantRepository.findMerchantByMerchantBusinessName(merchantDto.getMerchantBusinessName())!=null) throw
-            new RuntimeException("Record Already Exist! ");
+        if (merchantRepository.findMerchantByMerchantBusinessName(merchantDto.getMerchantBusinessName()) != null) throw
+                new RuntimeException("Record Already Exist! ");
 
         MerchantEntity merchantEntity = new MerchantEntity();
         BeanUtils.copyProperties(merchantDto, merchantEntity);
@@ -30,6 +30,15 @@ public class MerchantServiceImp implements MerchantService {
         MerchantEntity createdMerchant = merchantRepository.save(merchantEntity);
         MerchantDto returnValue = new MerchantDto();
         BeanUtils.copyProperties(createdMerchant, returnValue);
+        return returnValue;
+    }
+
+    @Override
+    public MerchantDto getMerchantByMerchantId(String merchantId) {
+        MerchantDto returnValue = new MerchantDto();
+        MerchantEntity merchantEntity = merchantRepository.findMerchantByMerchantId(merchantId);
+        if (merchantEntity == null) throw new RuntimeException("Merchant not found");
+        BeanUtils.copyProperties(merchantEntity, returnValue);
         return returnValue;
     }
 }

@@ -5,4 +5,6 @@ import com.example.merchant.reviewer.Dto.MerchantDto;
 public interface MerchantService {
 
     MerchantDto createMerchant(MerchantDto merchantDto);
+
+    MerchantDto getMerchantByMerchantId(String merchantId);
 }

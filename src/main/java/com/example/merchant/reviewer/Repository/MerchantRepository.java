@@ -7,4 +7,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface MerchantRepository extends JpaRepository<MerchantEntity,Long> {
     MerchantEntity findMerchantByMerchantBusinessName(String businessName);
+
+    MerchantEntity findMerchantByMerchantId(String merchantId);
 }
