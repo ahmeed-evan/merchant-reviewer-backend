@@ -1,8 +1,8 @@
 package com.example.merchant.reviewer.Service;
 
-import com.example.merchant.reviewer.EntityModel.MerchantEntity;
-
+import com.example.merchant.reviewer.Dto.MerchantDto;
 
 public interface MerchantService {
-    MerchantEntity addMerchant(MerchantEntity merchantEntity);
+
+    MerchantDto createMerchant(MerchantDto merchantDto);
 }
